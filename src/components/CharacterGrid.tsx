@@ -1,27 +1,7 @@
-import { useEffect, useState } from 'react';
-import { APIResponse, Character } from '../types';
-import apiClient, { AxiosError } from '../services/apiClient';
+import useCharacters from '../hooks/useCharacters';
 
 const CharacterGrid = () => {
-  const [characters, setCharacters] = useState<Character[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const constroller = new AbortController();
-    setIsLoading(true);
-
-    apiClient
-      .get<APIResponse>('/character', { signal: constroller.signal })
-      .then((res) => {
-        setCharacters(res.data.results);
-      })
-      .catch((error: AxiosError) => setError(error.message))
-      .finally(() => setIsLoading(false));
-
-    return () => constroller.abort();
-  }, []);
-
+  const { characters, error, isLoading } = useCharacters();
   return (
     <>
       {error && <p>{error}</p>}
