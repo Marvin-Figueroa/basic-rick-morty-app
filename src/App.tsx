@@ -1,5 +1,7 @@
+import { Heading } from '@chakra-ui/react';
+
 function App() {
-  return <h1>Rick & Morty</h1>;
+  return <Heading color='blueviolet'>Rick & Morty</Heading>;
 }
 
 export default App;
