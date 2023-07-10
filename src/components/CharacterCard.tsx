@@ -1,5 +1,5 @@
 import { BsHeartPulseFill, BsQuestionCircle } from 'react-icons/bs';
-import { FaSkull } from 'react-icons/fa';
+import { FaGenderless, FaSkull } from 'react-icons/fa';
 import { PiGenderMaleFill, PiGenderFemaleFill } from 'react-icons/pi';
 import {
   Card,
@@ -23,6 +23,7 @@ const statusMap: { [key: string]: IconType } = {
 const genderMap: { [key: string]: IconType } = {
   male: PiGenderMaleFill as IconType,
   female: PiGenderFemaleFill as IconType,
+  genderless: FaGenderless as IconType,
   unknown: BsQuestionCircle as IconType
 };
 
