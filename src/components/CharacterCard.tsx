@@ -32,7 +32,7 @@ interface Props {
 
 const CharacterCard = ({ character }: Props) => {
   return (
-    <Card borderRadius='lg' overflow='hidden' boxShadow='lg'>
+    <Card maxWidth='280px' borderRadius='lg' overflow='hidden' boxShadow='lg'>
       <Image src={character.image} />
       <CardBody display='flex' flexDirection='column' gap='15px'>
         <Heading as='h2' size='md'>

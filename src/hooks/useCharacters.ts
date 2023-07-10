@@ -16,13 +16,14 @@ function useCharacters() {
       .get<APIResponse>('/character', { signal: constroller.signal })
       .then((res) => {
         setCharacters(res.data.results);
+        setIsLoading(false);
       })
       .catch((error: AxiosError) => {
         if (!(error instanceof CanceledError)) {
           setError(error.message);
+          setIsLoading(false);
         }
-      })
-      .finally(() => setIsLoading(false));
+      });
 
     return () => constroller.abort();
   }, []);
