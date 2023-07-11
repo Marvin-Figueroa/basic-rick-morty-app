@@ -26,7 +26,10 @@ const useCharacters = (characterQuery: CharacterQuery) =>
           characterQuery.gender === 'All Genders'
             ? null
             : characterQuery.gender?.toLowerCase(),
-        status: characterQuery.status?.toLowerCase()
+        status:
+          characterQuery.status === 'All Statuses'
+            ? null
+            : characterQuery.status?.toLowerCase()
       }
     },
     [characterQuery]
