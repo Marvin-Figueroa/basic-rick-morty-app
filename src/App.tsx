@@ -15,16 +15,18 @@ function App() {
 
   return (
     <Grid
+      templateColumns={{ base: '1fr', md: '250px 1fr' }}
       templateAreas={{
         base: `"nav" "main"`,
-        lg: `"nav nav"
+        md: `"nav nav"
       "sidebar main"`
       }}
-      padding={4}>
+      padding={4}
+      gap={6}>
       <GridItem area='nav'>
         <NavBar />
       </GridItem>
-      <Show above='lg'>
+      <Show above='md'>
         <GridItem area='sidebar'>
           <Heading as='h2' size='lg' mb={5} textAlign='left'>
             Species

@@ -11,16 +11,16 @@ const CharacterGrid = () => {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }} spacing={10} p={5}>
+      <SimpleGrid columns={{ base: 1, sm: 2, lg: 3, xl: 4 }} spacing={8}>
         {isLoading &&
           skeletons.map((skeleton) => (
-            <CharacterCardContainer>
-              <CharacterCardSkeleton key={skeleton} />
+            <CharacterCardContainer key={skeleton}>
+              <CharacterCardSkeleton />
             </CharacterCardContainer>
           ))}
         {characters.map((character) => (
-          <CharacterCardContainer>
-            <CharacterCard key={character.id} character={character} />
+          <CharacterCardContainer key={character.id}>
+            <CharacterCard character={character} />
           </CharacterCardContainer>
         ))}
       </SimpleGrid>

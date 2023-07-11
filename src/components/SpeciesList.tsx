@@ -13,11 +13,12 @@ const SpeciesList = ({ selectedSpecie, onSelectedSpecie }: Props) => {
         <HStack key={specie.id}>
           <Image borderRadius='lg' boxSize='50px' src={specie.image} />
           <Text
+            fontSize='lg'
             cursor='pointer'
             onClick={() => onSelectedSpecie(specie)}
             fontWeight={selectedSpecie?.id === specie.id ? 'bold' : 'normal'}
             color={
-              selectedSpecie?.id === specie.id ? 'teal.300' : 'currentcolor'
+              selectedSpecie?.id === specie.id ? 'blue.200' : 'currentcolor'
             }>
             {specie.name}
           </Text>
