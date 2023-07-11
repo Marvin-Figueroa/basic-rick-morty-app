@@ -7,10 +7,14 @@ import { Species } from '../data/species';
 
 interface Props {
   selectedSpecies: Species | null;
+  selectedGender: string | null;
 }
 
-const CharacterGrid = ({ selectedSpecies }: Props) => {
-  const { data: characters, isLoading } = useCharacters(selectedSpecies);
+const CharacterGrid = ({ selectedSpecies, selectedGender }: Props) => {
+  const { data: characters, isLoading } = useCharacters(
+    selectedSpecies,
+    selectedGender
+  );
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (

@@ -16,9 +16,16 @@ export interface Character {
   created: Date;
 }
 
-const useCharacters = (species: Species | null) =>
-  useData<Character>('/character', { params: { species: species?.name } }, [
-    species?.id
-  ]);
+const useCharacters = (species: Species | null, gender: string | null) =>
+  useData<Character>(
+    '/character',
+    {
+      params: {
+        species: species?.name,
+        gender: gender === 'All Genders' ? null : gender?.toLowerCase()
+      }
+    },
+    [species?.id, gender]
+  );
 
 export default useCharacters;
