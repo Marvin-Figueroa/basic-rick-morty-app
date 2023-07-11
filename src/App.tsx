@@ -6,9 +6,15 @@ import { Species } from './data/species';
 import { useState } from 'react';
 import FilterMenu from './components/FilterMenu';
 
+export interface CharacterQuery {
+  species?: Species | null;
+  gender?: string;
+}
+
 function App() {
-  const [selectedSpecies, setSelectedSpecies] = useState<Species | null>(null);
-  const [selectedGender, setSelectedGender] = useState('All Genders');
+  const [characterQuery, setCharacterQuery] = useState<CharacterQuery>({
+    gender: 'All Genders'
+  });
 
   return (
     <Grid
@@ -29,16 +35,20 @@ function App() {
             Species
           </Heading>
           <SpeciesList
-            selectedSpecies={selectedSpecies}
-            onSelectSpecies={(species) => setSelectedSpecies(species)}
+            selectedSpecies={characterQuery.species}
+            onSelectSpecies={(species) =>
+              setCharacterQuery({ ...characterQuery, species })
+            }
           />
         </GridItem>
       </Show>
       <GridItem area='main'>
         <HStack marginBottom={5} spacing={5}>
           <FilterMenu
-            selectedOption={selectedGender}
-            onSelectOption={(gender) => setSelectedGender(gender)}
+            selectedOption={characterQuery.gender}
+            onSelectOption={(gender) =>
+              setCharacterQuery({ ...characterQuery, gender })
+            }
             filterOptions={[
               'All Genders',
               'Male',
@@ -48,10 +58,7 @@ function App() {
             ]}
           />
         </HStack>
-        <CharacterGrid
-          selectedGender={selectedGender}
-          selectedSpecies={selectedSpecies}
-        />
+        <CharacterGrid characterQuery={characterQuery} />
       </GridItem>
     </Grid>
   );

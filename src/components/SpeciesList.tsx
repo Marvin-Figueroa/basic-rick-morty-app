@@ -2,7 +2,7 @@ import { List, Button, HStack, Image } from '@chakra-ui/react';
 import { Species, species } from '../data/species';
 
 interface Props {
-  selectedSpecies: Species | null;
+  selectedSpecies: Species | null | undefined;
   onSelectSpecies: (species: Species) => void;
 }
 

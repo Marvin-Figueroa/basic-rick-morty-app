@@ -2,7 +2,7 @@ import { Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
 import { FaChevronDown } from 'react-icons/fa';
 
 interface Props {
-  selectedOption: string;
+  selectedOption: string | undefined;
   onSelectOption: (option: string) => void;
   filterOptions: string[];
 }

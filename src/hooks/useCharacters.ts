@@ -1,4 +1,4 @@
-import { Species } from '../data/species';
+import { CharacterQuery } from '../App';
 import useData from './useData';
 
 export interface Character {
@@ -16,16 +16,19 @@ export interface Character {
   created: Date;
 }
 
-const useCharacters = (species: Species | null, gender: string | null) =>
+const useCharacters = (characterQuery: CharacterQuery) =>
   useData<Character>(
     '/character',
     {
       params: {
-        species: species?.name,
-        gender: gender === 'All Genders' ? null : gender?.toLowerCase()
+        species: characterQuery.species?.name,
+        gender:
+          characterQuery.gender === 'All Genders'
+            ? null
+            : characterQuery.gender?.toLowerCase()
       }
     },
-    [species?.id, gender]
+    [characterQuery]
   );
 
 export default useCharacters;

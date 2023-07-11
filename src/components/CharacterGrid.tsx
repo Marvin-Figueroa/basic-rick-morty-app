@@ -3,18 +3,14 @@ import CharacterCard from './CharacterCard';
 import CharacterCardSkeleton from './CharacterCardSkeleton';
 import CharacterCardContainer from './CharacterCardContainer';
 import useCharacters from '../hooks/useCharacters';
-import { Species } from '../data/species';
+import { CharacterQuery } from '../App';
 
 interface Props {
-  selectedSpecies: Species | null;
-  selectedGender: string | null;
+  characterQuery: CharacterQuery;
 }
 
-const CharacterGrid = ({ selectedSpecies, selectedGender }: Props) => {
-  const { data: characters, isLoading } = useCharacters(
-    selectedSpecies,
-    selectedGender
-  );
+const CharacterGrid = ({ characterQuery }: Props) => {
+  const { data: characters, isLoading } = useCharacters(characterQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
