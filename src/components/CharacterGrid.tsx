@@ -11,7 +11,7 @@ const CharacterGrid = () => {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <SimpleGrid columns={{ base: 1, md: 3, lg: 4, xl: 5 }} spacing={10} p={5}>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }} spacing={10} p={5}>
         {isLoading &&
           skeletons.map((skeleton) => (
             <CharacterCardContainer>
