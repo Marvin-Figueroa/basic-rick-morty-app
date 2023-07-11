@@ -6,12 +6,7 @@ import { Species } from './data/species';
 import { useState } from 'react';
 
 function App() {
-  const [selectedSpecie, setSelectedSpecie] = useState<Species | null>(null);
-
-  const handleSelectedSpecies = (species: Species | null) => {
-    setSelectedSpecie(species);
-    console.log('selected species', species);
-  };
+  const [selectedSpecies, setSelectedSpecies] = useState<Species | null>(null);
 
   return (
     <Grid
@@ -32,13 +27,13 @@ function App() {
             Species
           </Heading>
           <SpeciesList
-            selectedSpecie={selectedSpecie}
-            onSelectedSpecie={handleSelectedSpecies}
+            selectedSpecies={selectedSpecies}
+            onSelectSpecies={(species) => setSelectedSpecies(species)}
           />
         </GridItem>
       </Show>
       <GridItem area='main'>
-        <CharacterGrid />
+        <CharacterGrid selectedSpecies={selectedSpecies} />
       </GridItem>
     </Grid>
   );

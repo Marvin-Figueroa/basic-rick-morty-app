@@ -1,34 +1,24 @@
-import { useEffect, useState } from 'react';
-import { APIResponse, Character } from '../types';
-import apiClient, { AxiosError } from '../services/apiClient';
-import { CanceledError } from 'axios';
+import { Species } from '../data/species';
+import useData from './useData';
 
-function useCharacters() {
-  const [characters, setCharacters] = useState<Character[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const constroller = new AbortController();
-    setIsLoading(true);
-
-    apiClient
-      .get<APIResponse>('/character', { signal: constroller.signal })
-      .then((res) => {
-        setCharacters(res.data.results);
-        setIsLoading(false);
-      })
-      .catch((error: AxiosError) => {
-        if (!(error instanceof CanceledError)) {
-          setError(error.message);
-          setIsLoading(false);
-        }
-      });
-
-    return () => constroller.abort();
-  }, []);
-
-  return { characters, isLoading, error };
+export interface Character {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: Location;
+  location: Location;
+  image: string;
+  episode: string[];
+  url: string;
+  created: Date;
 }
+
+const useCharacters = (species: Species | null) =>
+  useData<Character>('/character', { params: { species: species?.name } }, [
+    species?.id
+  ]);
 
 export default useCharacters;

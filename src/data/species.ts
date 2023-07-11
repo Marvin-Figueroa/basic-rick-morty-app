@@ -43,8 +43,8 @@ export const species: Species[] = [
   },
   {
     id: 5,
-    name: 'Unkown',
-    slug: 'unkown',
+    name: 'Unknown',
+    slug: 'unknown',
     image: Unkown
   },
   {

@@ -1,30 +1,34 @@
-import { HStack, Image, Text, VStack } from '@chakra-ui/react';
+import { List, Button, HStack, Image } from '@chakra-ui/react';
 import { Species, species } from '../data/species';
 
 interface Props {
-  selectedSpecie: Species | null;
-  onSelectedSpecie: (specie: Species) => void;
+  selectedSpecies: Species | null;
+  onSelectSpecies: (species: Species) => void;
 }
 
-const SpeciesList = ({ selectedSpecie, onSelectedSpecie }: Props) => {
+const SpeciesList = ({ selectedSpecies, onSelectSpecies }: Props) => {
   return (
-    <VStack alignItems='flex-start'>
-      {species.map((specie) => (
-        <HStack key={specie.id}>
-          <Image borderRadius='lg' boxSize='50px' src={specie.image} />
-          <Text
+    <List display='flex' flexDir='column' gap={4}>
+      {species.map((speciesItem) => (
+        <HStack key={speciesItem.id}>
+          <Image borderRadius='lg' boxSize='50px' src={speciesItem.image} />
+          <Button
+            variant='link'
             fontSize='lg'
-            cursor='pointer'
-            onClick={() => onSelectedSpecie(specie)}
-            fontWeight={selectedSpecie?.id === specie.id ? 'bold' : 'normal'}
+            onClick={() => onSelectSpecies(speciesItem)}
+            fontWeight={
+              selectedSpecies?.id === speciesItem.id ? 'bold' : 'normal'
+            }
             color={
-              selectedSpecie?.id === specie.id ? 'blue.200' : 'currentcolor'
+              selectedSpecies?.id === speciesItem.id
+                ? 'blue.200'
+                : 'currentcolor'
             }>
-            {specie.name}
-          </Text>
+            {speciesItem.name}
+          </Button>
         </HStack>
       ))}
-    </VStack>
+    </List>
   );
 };
 
