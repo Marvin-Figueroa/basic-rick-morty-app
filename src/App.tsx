@@ -9,11 +9,13 @@ import FilterMenu from './components/FilterMenu';
 export interface CharacterQuery {
   species?: Species | null;
   gender?: string;
+  status?: string;
 }
 
 function App() {
   const [characterQuery, setCharacterQuery] = useState<CharacterQuery>({
-    gender: 'All Genders'
+    gender: 'All Genders',
+    status: 'All Statuses'
   });
 
   return (
@@ -56,6 +58,13 @@ function App() {
               'Unknown',
               'Genderless'
             ]}
+          />
+          <FilterMenu
+            selectedOption={characterQuery.status}
+            onSelectOption={(status) =>
+              setCharacterQuery({ ...characterQuery, status })
+            }
+            filterOptions={['All Statuses', 'Alive', 'Dead', 'Unknown']}
           />
         </HStack>
         <CharacterGrid characterQuery={characterQuery} />
