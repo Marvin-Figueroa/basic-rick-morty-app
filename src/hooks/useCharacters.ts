@@ -29,7 +29,8 @@ const useCharacters = (characterQuery: CharacterQuery) =>
         status:
           characterQuery.status === 'All Statuses'
             ? null
-            : characterQuery.status?.toLowerCase()
+            : characterQuery.status?.toLowerCase(),
+        name: characterQuery.name
       }
     },
     [characterQuery]

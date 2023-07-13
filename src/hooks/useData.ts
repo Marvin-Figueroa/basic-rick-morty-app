@@ -27,7 +27,7 @@ function useData<T>(
   useEffect(
     () => {
       const constroller = new AbortController();
-
+      setError('');
       setIsLoading(true);
       apiClient
         .get<APIResponse<T>>(endpoint, {

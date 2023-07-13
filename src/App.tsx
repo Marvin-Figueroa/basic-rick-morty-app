@@ -10,6 +10,7 @@ export interface CharacterQuery {
   species?: Species | null;
   gender?: string;
   status?: string;
+  name?: string;
 }
 
 function App() {
@@ -29,7 +30,11 @@ function App() {
       padding={4}
       gap={6}>
       <GridItem area='nav'>
-        <NavBar />
+        <NavBar
+          onSearch={(searchTerm) =>
+            setCharacterQuery({ ...characterQuery, name: searchTerm })
+          }
+        />
       </GridItem>
       <Show above='md'>
         <GridItem area='sidebar'>
