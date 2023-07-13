@@ -5,6 +5,7 @@ import SpeciesList from './components/SpeciesList';
 import { Species } from './data/species';
 import { useState } from 'react';
 import FilterMenu from './components/FilterMenu';
+import CharacterHeading from './components/CharacterHeading';
 
 export interface CharacterQuery {
   species?: Species | null;
@@ -50,7 +51,8 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area='main'>
-        <HStack marginBottom={5} spacing={5}>
+        <CharacterHeading characterQuery={characterQuery} />
+        <HStack marginY={5} spacing={5}>
           <FilterMenu
             selectedOption={characterQuery.gender}
             onSelectOption={(gender) =>
