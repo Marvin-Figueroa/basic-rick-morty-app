@@ -11,8 +11,8 @@ import {
   Text,
   Tooltip
 } from '@chakra-ui/react';
-import { Character } from '../types';
 import { IconType } from 'react-icons';
+import { Character } from '../hooks/useCharacters';
 
 const statusMap: { [key: string]: IconType } = {
   alive: BsHeartPulseFill as IconType,
