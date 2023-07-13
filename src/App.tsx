@@ -52,7 +52,10 @@ function App() {
       </Show>
       <GridItem area='main'>
         <CharacterHeading characterQuery={characterQuery} />
-        <HStack marginY={5} spacing={5}>
+        <HStack
+          marginY={5}
+          spacing={5}
+          justifyContent={{ base: 'center', md: 'flex-start' }}>
           <FilterMenu
             selectedOption={characterQuery.gender}
             onSelectOption={(gender) =>

@@ -22,7 +22,11 @@ const CharacterHeading = ({ characterQuery }: Props) => {
     characterQuery?.species?.name || 'Character'
   }s`;
 
-  return <Heading as='h1'>{heading}</Heading>;
+  return (
+    <Heading textAlign={{ base: 'center', md: 'left' }} as='h1'>
+      {heading}
+    </Heading>
+  );
 };
 
 export default CharacterHeading;
