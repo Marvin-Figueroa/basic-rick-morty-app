@@ -14,8 +14,6 @@ const SearchBar = ({ onSearch }: Props) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(searchRef?.current?.value);
-
           onSearch(searchRef?.current?.value || '');
         }}>
         <InputGroup>
